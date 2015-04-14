@@ -70,8 +70,8 @@
         }
     },
     "resources": [
-			{
-            "apiVersion": "2014-04-01-preview",
+		{
+            "apiVersion": "2014-11-01",
             "name": "[parameters('sqlServerName')]",
             "type": "Microsoft.Sql/servers",
             "location": "[parameters('sqlServerLocation')]",
@@ -84,7 +84,7 @@
             },
             "resources": [
                 {
-                    "apiVersion": "2014-04-01-preview",
+                    "apiVersion": "2014-11-01",
                     "name": "[parameters('sqlDbName')]",
                     "type": "databases",
                     "location": "[parameters('sqlServerLocation')]",
@@ -102,7 +102,7 @@
                     }
                 },
                 {
-                    "apiVersion": "2014-04-01-preview",
+                    "apiVersion": "2014-11-01",
                     "name": "SQLServerFirewallRules",
                     "type": "firewallrules",
                     "location": "[parameters('sqlServerLocation')]",
@@ -117,7 +117,7 @@
             ]
         },
         {
-            "apiVersion": "2014-06-01",
+            "apiVersion": "2014-11-01",
             "name": "[parameters('hostingPlanName')]",
             "type": "Microsoft.Web/serverFarms",
             "location": "[parameters('siteLocation')]",
@@ -129,20 +129,20 @@
             }
         },
         {
-            "apiVersion": "2014-06-01",
-            "name": "[concat(parameters('siteName'),'-api')]",
+            "apiVersion": "2014-11-01",
+            "name": "[concat(parameters('siteName'), '-api')]",
             "type": "Microsoft.Web/sites",
             "location": "[parameters('siteLocation')]",
             "dependsOn": [
                 "[concat('Microsoft.Web/serverFarms/', parameters('hostingPlanName'))]"
             ],
             "properties": {
-                "name": "[concat(parameters('siteName'),'-api')]",
+                "name": "[concat(parameters('siteName'), '-api')]",
                 "serverFarm": "[parameters('hostingPlanName')]"
             },
             "resources": [
                 {
-                    "apiVersion": "2014-04-01",
+                    "apiVersion": "2014-11-01",
                     "type": "config",
                     "name": "web",
                     "dependsOn": [
@@ -159,17 +159,17 @@
 						"appSettings" : [
 							{
 								"name": "PROJECT",
-								"value": "src\MultiChannelToDo\MultiChannelToDo.csproj"
+								"value": "src\\MultiChannelToDo\\MultiChannelToDo.csproj"
 							}
 						]
                     }
                 },
                 {
-                    "apiVersion": "2014-04-01",
+                    "apiVersion": "2014-11-01",
                     "name": "web",
                     "type": "sourcecontrols",
                     "dependsOn": [
-                        "[resourceId('Microsoft.Web/Sites', concat(parameters('siteName'),'-api'))]",
+                        "[resourceId('Microsoft.Web/Sites', concat(parameters('siteName'), '-api'))]",
                         "[concat('Microsoft.Web/sites/', parameters('siteName'), '-api', '/config/web')]"
                     ],
                     "properties": {
@@ -181,20 +181,20 @@
             ]
         },
         {
-            "apiVersion": "2014-06-01",
-            "name": "[concat(parameters('siteName'),'-client')]",
+            "apiVersion": "2014-11-01",
+            "name": "[concat(parameters('siteName'), '-client')]",
             "type": "Microsoft.Web/sites",
             "location": "[parameters('siteLocation')]",
             "dependsOn": [
                 "[concat('Microsoft.Web/serverFarms/', parameters('hostingPlanName'))]"
             ],
             "properties": {
-                "name": "[concat(parameters('siteName'),'-client')]",
+                "name": "[concat(parameters('siteName'), '-client')]",
                 "serverFarm": "[parameters('hostingPlanName')]"
             },
             "resources": [
                 {
-                    "apiVersion": "2014-04-01",
+                    "apiVersion": "2014-11-01",
                     "type": "config",
                     "name": "web",
                     "dependsOn": [
@@ -208,13 +208,13 @@
                             },
                             {
                                 "name": "DEPLOYMENT_SOURCE",
-                                "value":  "src\MultiChannelToDo.Web\app"
+                                "value":  "src\\MultiChannelToDo.Web\\app"
                             }
                         ]
                     }
                 },
                 {
-                    "apiVersion": "2014-04-01",
+                    "apiVersion": "2014-11-01",
                     "name": "web",
                     "type": "sourcecontrols",
                     "dependsOn": [
