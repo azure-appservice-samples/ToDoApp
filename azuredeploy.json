@@ -207,7 +207,7 @@
                                 "value": "[concat(parameters('siteName'), '-api', '.azurewebsites.net')]"
                             },
                             {
-                                "name": "DEPLOYMENT_SOURCE",
+                                "name": "PROJECT",
                                 "value":  "src\\MultiChannelToDo.Web\\app"
                             }
                         ]

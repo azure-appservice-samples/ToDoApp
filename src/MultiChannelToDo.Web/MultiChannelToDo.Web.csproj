@@ -78,15 +78,9 @@
     <None Include="Properties\PublishProfiles\cf-todo.pubxml" />
     <None Include="Properties\PublishProfiles\cf-todoapp.pubxml" />
     <None Include="Properties\PublishProfiles\donnam-multichannel-webapp.pubxml" />
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Web.config" />
+    <Content Include="app\Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
