@@ -71,7 +71,7 @@
     },
     "resources": [
 		{
-            "apiVersion": "2014-11-01",
+            "apiVersion": "2014-04-01-preview",
             "name": "[parameters('sqlServerName')]",
             "type": "Microsoft.Sql/servers",
             "location": "[parameters('sqlServerLocation')]",
