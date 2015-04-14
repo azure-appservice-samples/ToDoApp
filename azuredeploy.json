@@ -142,7 +142,7 @@
             },
             "resources": [
                 {
-                    "apiVersion": "2014-11-01",
+                    "apiVersion": "2014-04-01",
                     "type": "config",
                     "name": "web",
                     "dependsOn": [
@@ -165,7 +165,7 @@
                     }
                 },
                 {
-                    "apiVersion": "2014-11-01",
+                    "apiVersion": "2014-04-01",
                     "name": "web",
                     "type": "sourcecontrols",
                     "dependsOn": [
@@ -194,7 +194,7 @@
             },
             "resources": [
                 {
-                    "apiVersion": "2014-11-01",
+                    "apiVersion": "2014-04-01",
                     "type": "config",
                     "name": "web",
                     "dependsOn": [
@@ -214,7 +214,7 @@
                     }
                 },
                 {
-                    "apiVersion": "2014-11-01",
+                    "apiVersion": "2014-04-01",
                     "name": "web",
                     "type": "sourcecontrols",
                     "dependsOn": [
