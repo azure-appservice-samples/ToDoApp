@@ -149,6 +149,12 @@
                         "[concat('Microsoft.Web/sites/', parameters('siteName'), '-api')]"
                     ],
                     "properties": {
+                    	"appSettings": [
+                            {
+                                "name": "apiPath",
+                                "value": "[concat(parameters('siteName'), '.azurewebsites.net')]"
+                            }
+                    	],
                         "connectionStrings": [
                             {
                                 "Name": "DefaultConnectionString",
@@ -182,14 +188,14 @@
         },
         {
             "apiVersion": "2014-11-01",
-            "name": "[concat(parameters('siteName'), '-client')]",
+            "name": "[parameters('siteName')]",
             "type": "Microsoft.Web/sites",
             "location": "[parameters('siteLocation')]",
             "dependsOn": [
                 "[concat('Microsoft.Web/serverFarms/', parameters('hostingPlanName'))]"
             ],
             "properties": {
-                "name": "[concat(parameters('siteName'), '-client')]",
+                "name": "[parameters('siteName')]",
                 "serverFarm": "[parameters('hostingPlanName')]"
             },
             "resources": [
@@ -198,7 +204,7 @@
                     "type": "config",
                     "name": "web",
                     "dependsOn": [
-                        "[concat('Microsoft.Web/sites/', parameters('siteName'), '-client')]"
+                        "[concat('Microsoft.Web/sites/', parameters('siteName'))]"
                     ],
                     "properties": {
                         "appSettings": [
@@ -218,8 +224,8 @@
                     "name": "web",
                     "type": "sourcecontrols",
                     "dependsOn": [
-                        "[resourceId('Microsoft.Web/Sites', concat(parameters('siteName'),'-client'))]",
-                        "[concat('Microsoft.Web/sites/', parameters('siteName'), '-client', '/config/web')]"
+                        "[resourceId('Microsoft.Web/Sites', parameters('siteName'))]",
+                        "[concat('Microsoft.Web/sites/', parameters('siteName'), '/config/web')]"
                     ],
                     "properties": {
                         "RepoUrl": "[parameters('repoUrl')]",
