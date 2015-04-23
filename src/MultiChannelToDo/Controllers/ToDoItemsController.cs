@@ -11,7 +11,6 @@ using System.Web.Http.OData;
 
 namespace MultiChannelToDo.Controllers
 {
-    [EnableCors("*", "*", "*", SupportsCredentials = false)]
     public class ToDoItemsController : ApiController
     {
         private MultiChannelToDoContext db = new MultiChannelToDoContext();

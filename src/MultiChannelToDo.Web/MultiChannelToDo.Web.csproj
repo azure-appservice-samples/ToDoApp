@@ -73,8 +73,6 @@
     <Content Include="app\lib\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="app\lib\bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="app\lib\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="package.json" />
-    <Content Include="bower.json" />
     <None Include="Properties\PublishProfiles\cf-todo.pubxml" />
     <None Include="Properties\PublishProfiles\cf-todoapp.pubxml" />
     <None Include="Properties\PublishProfiles\donnam-multichannel-webapp.pubxml" />

@@ -1,5 +1,6 @@
 ﻿using System.Web.Http;
 using System.Web.Http.Cors;
+using System.Configuration;
 
 namespace MultiChannelToDo
 {
@@ -15,7 +16,10 @@ namespace MultiChannelToDo
                 new { id = RouteParameter.Optional }
             );
 
-            config.EnableCors(new EnableCorsAttribute("*", "*", "*", "*"));
+            AppSettingsReader reader = new AppSettingsReader();
+            string clientUrl = reader.GetValue("clientUrl", typeof(string)).ToString();
+
+            config.EnableCors(new EnableCorsAttribute(clientUrl, "*", "*", "*"));
         }
     }
 }
