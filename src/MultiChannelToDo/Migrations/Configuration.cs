@@ -11,7 +11,7 @@ namespace MultiChannelToDo.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(MultiChannelToDo.Models.MultiChannelToDoContext context)
