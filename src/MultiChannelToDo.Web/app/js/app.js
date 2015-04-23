@@ -1,1 +1,1 @@
-var multiChannelToDoApp = angular.module('multiChannelToDo', [])
+var multiChannelToDoApp = angular.module('multiChannelToDo', []);
