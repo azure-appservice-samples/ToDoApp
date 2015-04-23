@@ -46,6 +46,10 @@ bld/
 [Bb]in/
 [Oo]bj/
 
+# Don't ignore a deployable bin directory
+!/**/[Aa]pp/[Bb]in
+
+
 # Visual Studo 2015 cache/options directory
 .vs/
 

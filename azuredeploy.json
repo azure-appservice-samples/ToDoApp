@@ -37,7 +37,7 @@
             "type": "string",
             "defaultValue": "master"
         },
-		"sqlServerName": {
+        "sqlServerName": {
             "type": "string"
         },
         "sqlServerLocation": {
@@ -153,20 +153,20 @@
                         "connectionStrings": [
                             {
                                 "Name": "DefaultConnectionString",
-				"ConnectionString": "[concat('Data Source=tcp:', reference(concat('Microsoft.Sql/servers/', parameters('sqlServerName'))).fullyQualifiedDomainName, ',1433;Initial Catalog=', parameters('sqlDbName'), ';User Id=', parameters('sqlServerAdminLogin'), '@', parameters('sqlServerName'), ';Password=', parameters('sqlServerAdminPassword'), ';')]",
-				"Type": 2
+				                "ConnectionString": "[concat('Data Source=tcp:', reference(concat('Microsoft.Sql/servers/', parameters('sqlServerName'))).fullyQualifiedDomainName, ',1433;Initial Catalog=', parameters('sqlDbName'), ';User Id=', parameters('sqlServerAdminLogin'), '@', parameters('sqlServerName'), ';Password=', parameters('sqlServerAdminPassword'), ';')]",
+				                "Type": 2
                             }
                         ],
-			"appSettings" : [
-				{
-					"name": "PROJECT",
-					"value": "src\\MultiChannelToDo\\MultiChannelToDo.csproj"
-				},
-				{
-                                	"name": "clientUrl",
-                                	"value": "[concat(parameters('siteName'), '.azurewebsites.net')]"
-                            	}
-			]
+			            "appSettings" : [
+				            {
+					            "name": "PROJECT",
+					            "value": "src\\MultiChannelToDo\\MultiChannelToDo.csproj"
+				            },
+				            {
+                	            "name": "clientUrl",
+                   	            "value": "[concat(parameters('siteName'), '.azurewebsites.net')]"
+                            }
+			            ]
                     }
                 },
                 {
@@ -214,6 +214,10 @@
                             {
                                 "name": "PROJECT",
                                 "value":  "src\\MultiChannelToDo.Web\\app"
+                            },
+                            {
+                                "name": "SCM_POST_DEPLOYMENT_ACTIONS_PATH",
+                                "value": "d:\home\site\wwwroot\bin"
                             }
                         ]
                     }
