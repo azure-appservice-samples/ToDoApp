@@ -217,7 +217,7 @@
                             },
                             {
                                 "name": "SCM_POST_DEPLOYMENT_ACTIONS_PATH",
-                                "value": "d:\home\site\wwwroot\bin"
+                                "value": "d:\\home\\site\\wwwroot\\bin"
                             }
                         ]
                     }
