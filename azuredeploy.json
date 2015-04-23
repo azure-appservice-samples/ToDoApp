@@ -38,8 +38,7 @@
             "defaultValue": "master"
         },
 		"sqlServerName": {
-            "type": "string",
-            "defaultValue": "todo-db"
+            "type": "string"
         },
         "sqlServerLocation": {
             "type": "string"
@@ -51,7 +50,8 @@
             "type": "securestring"
         },
         "sqlDbName": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "DemosDB"
         },
         "sqlDbCollation": {
             "type": "string",
