@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using MultiChannelToDo.Migrations;
 
 namespace MultiChannelToDo.Models
 {
@@ -27,7 +28,8 @@ namespace MultiChannelToDo.Models
                                                                   // replacing dashes with underscore
                                                                   // mobile-service-name ==> mobile_service_name
 
-            Database.SetInitializer<MultiChannelToDoContext>(null);
+            Database.SetInitializer<MultiChannelToDoContext>(
+                new MigrateDatabaseToLatestVersion<MultiChannelToDoContext, Configuration>());
 
             base.OnModelCreating(modelBuilder);
         }
