@@ -209,7 +209,7 @@
                         "appSettings": [
                             {
                                 "name": "apiPath",
-                                "value": "[concat(parameters('siteName'), '-api', '.azurewebsites.net')]"
+                                "value": "[concat('https://', parameters('siteName'), '-api', '.azurewebsites.net/api')]"
                             },
                             {
                                 "name": "PROJECT",
