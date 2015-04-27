@@ -19,6 +19,9 @@ namespace MultiChannelToDo
             AppSettingsReader reader = new AppSettingsReader();
             string clientUrl = reader.GetValue("clientUrl", typeof(string)).ToString();
 
+            // CORS URL must be all lowercase
+            clientUrl = clientUrl.ToLowerInvariant();
+
             config.EnableCors(new EnableCorsAttribute(clientUrl, "*", "*", "*"));
         }
     }
