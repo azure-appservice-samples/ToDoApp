@@ -152,7 +152,7 @@
                     "properties": {
                         "connectionStrings": [
                             {
-                                "Name": "DefaultConnectionString",
+                                "Name": "MultiChannelToDoContext",
 				                "ConnectionString": "[concat('Data Source=tcp:', reference(concat('Microsoft.Sql/servers/', parameters('sqlServerName'))).fullyQualifiedDomainName, ',1433;Initial Catalog=', parameters('sqlDbName'), ';User Id=', parameters('sqlServerAdminLogin'), '@', parameters('sqlServerName'), ';Password=', parameters('sqlServerAdminPassword'), ';')]",
 				                "Type": 2
                             }
