@@ -135,7 +135,8 @@
             "type": "Microsoft.Web/sites",
             "location": "[parameters('siteLocation')]",
             "dependsOn": [
-                "[concat('Microsoft.Web/serverFarms/', parameters('hostingPlanName'))]"
+                "[concat('Microsoft.Web/serverFarms/', parameters('hostingPlanName'))]",
+                "[concat('Microsoft.Sql/servers/', parameters('sqlServerName'))]"
             ],
             "properties": {
                 "name": "[concat(parameters('siteName'), '-api')]",
