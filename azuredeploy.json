@@ -165,7 +165,7 @@
 				            },
 				            {
                 	            "name": "clientUrl",
-                   	            "value": "[concat(parameters('siteName'), '.azurewebsites.net')]"
+                   	            "value": "[concat('http://', parameters('siteName'), '.azurewebsites.net')]"
                             }
 			            ]
                     }
@@ -210,7 +210,7 @@
                         "appSettings": [
                             {
                                 "name": "apiPath",
-                                "value": "[concat('https://', parameters('siteName'), '-api', '.azurewebsites.net/api')]"
+                                "value": "[concat('http://', parameters('siteName'), '-api', '.azurewebsites.net/api')]"
                             },
                             {
                                 "name": "PROJECT",
