@@ -58,7 +58,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\css\site.css" />
-    <Content Include="app\index.cshtml" />
+    <Content Include="app\img\spinner.gif" />
+    <Content Include="app\index.html" />
     <Content Include="app\js\app.js" />
     <Content Include="app\js\controllers\ToDoController.js" />
     <Content Include="app\js\services\ToDoService.js" />
@@ -99,7 +100,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>51150</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:51150/</IISUrl>
+          <IISUrl>http://localhost:51150</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

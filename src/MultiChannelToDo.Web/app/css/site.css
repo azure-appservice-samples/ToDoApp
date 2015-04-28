@@ -30,3 +30,11 @@ li.check-list-item {
 div.controls-container {
     text-align: right;
 }
+
+.spinner {
+    width: 25px;
+    height: 25px;
+    position: relative;
+    top: 75px;
+    left: 125px;
+}

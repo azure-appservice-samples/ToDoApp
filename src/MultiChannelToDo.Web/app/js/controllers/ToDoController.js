@@ -5,11 +5,16 @@ multiChannelToDoApp
         $scope.itemCount = 0;
 
         $scope.get = function () {
+
+            $scope.loading = true;
+
             toDoService.getItems()
                 .success(function (data) {
                     $scope.itemCount = data.length;
                     $scope.items = data;
-            });
+                });
+
+            $scope.loading = false;
         };
 
         $scope.add = function () {
