@@ -40,9 +40,6 @@
     "sqlServerName":{
       "type":"string"
     },
-    "sqlServerLocation":{
-      "type":"string"
-    },
     "sqlServerAdminLogin":{
       "type":"string"
     },
@@ -78,7 +75,7 @@
       "apiVersion":"2014-04-01-preview",
       "name":"[parameters('sqlServerName')]",
       "type":"Microsoft.Sql/servers",
-      "location":"[parameters('sqlServerLocation')]",
+      "location":"[parameters('siteLocation')]",
       "properties":{
         "administratorLogin":"[parameters('sqlServerAdminLogin')]",
         "administratorLoginPassword":"[parameters('sqlServerAdminPassword')]"
@@ -88,7 +85,7 @@
           "apiVersion":"2014-11-01",
           "name":"[parameters('sqlDbName')]",
           "type":"databases",
-          "location":"[parameters('sqlServerLocation')]",
+          "location":"[parameters('siteLocation')]",
           "dependsOn":[
             "[concat('Microsoft.Sql/servers/', parameters('sqlServerName'))]"
           ],
@@ -103,7 +100,7 @@
           "apiVersion":"2014-11-01",
           "name":"SQLServerFirewallRules",
           "type":"firewallrules",
-          "location":"[parameters('sqlServerLocation')]",
+          "location":"[parameters('siteLocation')]",
           "dependsOn":[
             "[concat('Microsoft.Sql/servers/', parameters('sqlServerName'))]"
           ],
