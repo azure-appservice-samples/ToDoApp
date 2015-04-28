@@ -59,7 +59,7 @@
   <ItemGroup>
     <Content Include="app\bin\createJS.cmd" />
     <Content Include="app\css\site.css" />
-    <Content Include="app\index.html" />
+    <Content Include="app\index.cshtml" />
     <Content Include="app\js\app.js" />
     <Content Include="app\js\controllers\ToDoController.js" />
     <Content Include="app\js\services\ToDoService.js" />
