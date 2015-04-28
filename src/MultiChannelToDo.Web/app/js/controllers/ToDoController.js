@@ -9,17 +9,20 @@ multiChannelToDoApp
             $scope.loading = true;
 
             toDoService.getItems()
-                .success(function (data) {
+                .then(function (data) {
                     $scope.itemCount = data.length;
                     $scope.items = data;
-                });
-
-            $scope.loading = false;
+                }, function (data) {
+                    // Todo: Error Logic?
+                })
+                .finally(function () {
+                    $scope.loading = false;
+                });;
         };
 
         $scope.add = function () {
             toDoService.add($scope.itemCount, $scope.itemText)
-            .success(function(data){
+            .success(function (data) {
                 $scope.itemText = '';
                 $scope.get();
             });
@@ -34,4 +37,4 @@ multiChannelToDoApp
 
         $scope.get();
 
-}]);
+    }]);
