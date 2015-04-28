@@ -13,7 +13,7 @@ namespace MultiChannelToDo
             config.Routes.MapHttpRoute(
                 "DefaultApi",
                 "{namespace}/{controller}/{id}",
-                new {  @namespace = "api", controller = "ToDoItems",    id = RouteParameter.Optional}
+                new { @namespace = "api", controller = "ToDoItems", id = RouteParameter.Optional }
             );
 
             AppSettingsReader reader = new AppSettingsReader();
