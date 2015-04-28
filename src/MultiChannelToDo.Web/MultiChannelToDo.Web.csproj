@@ -59,7 +59,7 @@
   <ItemGroup>
     <Content Include="app\css\site.css" />
     <Content Include="app\img\spinner.gif" />
-    <Content Include="app\index.html" />
+    <None Include="app\index.cshtml" />
     <Content Include="app\js\app.js" />
     <Content Include="app\js\controllers\ToDoController.js" />
     <Content Include="app\js\services\ToDoService.js" />
