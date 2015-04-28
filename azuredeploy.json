@@ -215,10 +215,6 @@
                             {
                                 "name": "PROJECT",
                                 "value":  "src\\MultiChannelToDo.Web\\app"
-                            },
-                            {
-                                "name": "SCM_POST_DEPLOYMENT_ACTIONS_PATH",
-                                "value": "d:\\home\\site\\wwwroot\\bin"
                             }
                         ]
                     }

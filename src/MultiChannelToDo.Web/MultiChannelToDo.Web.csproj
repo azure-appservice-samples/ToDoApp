@@ -57,7 +57,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\bin\createJS.cmd" />
     <Content Include="app\css\site.css" />
     <Content Include="app\index.cshtml" />
     <Content Include="app\js\app.js" />
