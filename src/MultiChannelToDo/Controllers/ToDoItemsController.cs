@@ -8,6 +8,7 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using System.Web.Http.OData;
+using System.Diagnostics;
 
 namespace MultiChannelToDo.Controllers
 {
@@ -19,6 +20,8 @@ namespace MultiChannelToDo.Controllers
         [EnableQuery]
         public IQueryable<TodoItem> GetToDoItems()
         {
+            Trace.TraceInformation("Returning all ToDo items");
+
             return db.ToDoItems;
         }
 
@@ -40,6 +43,8 @@ namespace MultiChannelToDo.Controllers
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutToDoItem(string id, TodoItem toDoItem)
         {
+            Trace.TraceInformation("Adding item '{0}'", id);
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -105,6 +110,8 @@ namespace MultiChannelToDo.Controllers
         [ResponseType(typeof(TodoItem))]
         public async Task<IHttpActionResult> DeleteToDoItem(string id)
         {
+            Trace.TraceInformation("Deleting item '{0}'", id);
+
             TodoItem toDoItem = await db.ToDoItems.FindAsync(id);
             if (toDoItem == null)
             {
