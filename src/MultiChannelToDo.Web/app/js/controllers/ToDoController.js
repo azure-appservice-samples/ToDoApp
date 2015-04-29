@@ -9,15 +9,15 @@ multiChannelToDoApp
             $scope.loading = true;
 
             toDoService.getItems()
-                .then(function (data) {
+                .success(function (data) {
                     $scope.itemCount = data.length;
                     $scope.items = data;
-                }, function (data) {
-                    // Todo: Error Logic?
-                })
-                .finally(function () {
                     $scope.loading = false;
-                });;
+                })
+                .error(function (reason) {
+                    console.log(reason);
+                    $scope.loading = false;
+                });
         };
 
         $scope.add = function () {
