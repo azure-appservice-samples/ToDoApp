@@ -1,0 +1,29 @@
+{
+    "siteName": {
+        "value": "ToDoApp{UNIQUE}"
+    },
+    "hostingPlanName": {
+        "value": "ASP{UNIQUE}"
+    },
+    "siteLocation": {
+        "value": "{LOCATION}"
+    },
+    "repoUrl": {
+        "value": "{REPO}"
+    },
+    "branch": {
+        "value": "{BRANCH}"
+    },
+    "sqlServerName": {
+        "value": "todoappsql-{UNIQUE}"
+    },
+    "sqlServerAdminLogin": {
+        "value": "DemosAdmin"
+    },
+    "sqlServerAdminPassword": {
+        "value": "p@ssw0rd"
+    },
+    "sqlDbName": {
+        "value": "DemosDB"
+    }
+}
