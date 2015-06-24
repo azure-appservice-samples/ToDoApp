@@ -18,10 +18,10 @@
         "value": "todoappsql-{UNIQUE}"
     },
     "sqlServerAdminLogin": {
-        "value": "DemosAdmin"
+        "value": "{USERNAME}"
     },
     "sqlServerAdminPassword": {
-        "value": "p@ssw0rd"
+        "value": "{PASSWORD}"
     },
     "sqlDbName": {
         "value": "DemosDB"
