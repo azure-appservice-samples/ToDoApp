@@ -8,9 +8,10 @@ if(!(Get-Module Azure) -and !(Get-Module AzureResourceManager))
 }
 
 #Use ARM cmdlets
-Switch-AzureMode -Name AzureServiceManagement
+Switch-AzureMode -Name AzureServiceManagement -WarningAction SilentlyContinue
 
-Switch-AzureWebsiteSlot -Name $Name -Slot1 staging -Force
-Switch-AzureWebsiteSlot -Name "${Name}Api" -Slot1 staging -Force
+#Swap backend first and then frontend
+Switch-AzureWebsiteSlot -Name "${Name}Api" -Slot1 staging -Force -Verbose
+Switch-AzureWebsiteSlot -Name $Name -Slot1 staging -Force -Verbose
 
 Write-Host "Done"

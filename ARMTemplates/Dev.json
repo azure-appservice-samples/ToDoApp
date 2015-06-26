@@ -77,9 +77,6 @@
             "name": "[parameters('sqlServerName')]",
             "type": "Microsoft.Sql/servers",
             "location": "[parameters('siteLocation')]",
-            "tags": {
-                "displayName": "SQLServer"
-            },
             "properties": {
                 "administratorLogin": "[parameters('sqlServerAdminLogin')]",
                 "administratorLoginPassword": "[parameters('sqlServerAdminPassword')]"
@@ -90,9 +87,6 @@
                     "name": "[parameters('sqlDbName')]",
                     "type": "databases",
                     "location": "[parameters('siteLocation')]",
-                    "tags": {
-                        "displayName": "SQLDatabase"
-                    },
                     "dependsOn": [
                         "[resourceId('Microsoft.Sql/servers', parameters('sqlServerName'))]"
                     ],
@@ -136,8 +130,7 @@
             "type": "Microsoft.Web/sites",
             "location": "[parameters('siteLocation')]",
             "dependsOn": [
-                "[resourceId('Microsoft.Web/serverFarms', parameters('hostingPlanName'))]",
-                "[resourceId('Microsoft.Sql/servers', parameters('sqlServerName'))]"
+                "[resourceId('Microsoft.Web/serverFarms', parameters('hostingPlanName'))]"
             ],
             "properties": {
                 "serverFarmId": "[parameters('hostingPlanName')]"

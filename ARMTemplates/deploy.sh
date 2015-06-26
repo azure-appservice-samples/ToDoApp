@@ -64,11 +64,19 @@ else
 	RG_Name="ToDoApp${Unique}-group"
 	RG_Location="WestUS"
 
+	#Read SQL Database credentials
+	echo "Supply values for the following parameters:"
+	read -p "sqlServerAdminLogin: " SqlUser
+	read -s -p "sqlServerAdminPassword: " SqlPassword
+	echo
+
 	JSON=`cat $TemplateParameterFile`
 	JSON=${JSON//\{UNIQUE\}/$Unique}
 	JSON=${JSON//\{LOCATION\}/$RG_Location}
 	JSON=${JSON//\{REPO\}/$RepoUrl}
 	JSON=${JSON//\{BRANCH\}/$Branch}
+	JSON=${JSON//\{USERNAME\}/$SqlUser}
+	JSON=${JSON//\{PASSWORD\}/$SqlPassword}
 	echo "$JSON" > "./temp.json"
 
 	echo -e "\033[1;32m Creating Resource Group, App Service Plan, Web Apps and SQL Database... \033[0m"
@@ -77,6 +85,7 @@ else
 
 	azure group create --name $RG_Name --location $RG_Location --deployment-name $RG_Name --template-file $TemplateFile --parameters-file ./temp.json
 
+	#Delete temporary JSON file as it stores SQL Database credentials
 	rm ./temp.json
 
 	echo -e "\033[1;32m ----------------------------------------- \033[0m"
