@@ -294,6 +294,35 @@
                     ]
                 }
             ]
+        },
+        {
+            "name": "[concat('autoscale-', parameters('hostingPlanName'), '-', resourceGroup().name)]",
+            "type": "Microsoft.Insights/autoscalesettings",
+            "location": "East US",
+            "apiVersion": "2014-04-01",
+            "dependsOn": [
+                "[concat('Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]"
+            ],
+            "tags": {
+                "[concat('hidden-link:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]": "Resource"
+            },
+            "properties": {
+                "name": "[concat('autoscale-', parameters('hostingPlanName'), '-', resourceGroup().name)]",
+                "profiles": [
+                    {
+                        "name": "Default",
+                        "capacity": {
+                            "minimum": 3,
+                            "maximum": 3,
+                            "default": 3
+                        },
+                        "rules": [
+                        ]
+                    }
+                ],
+                "enabled": true,
+                "targetResourceUri": "[concat(resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]"
+            }
         }
     ]
 }
