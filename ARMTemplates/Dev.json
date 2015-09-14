@@ -196,7 +196,7 @@
                         "[resourceId('Microsoft.Web/Sites', parameters('siteName'))]"
                     ],
                     "properties": {
-                        "PROJECT": "src\\MultiChannelToDo.Web\\app",
+                        "PROJECT": "src\\MultiChannelToDo.Web\\MultiChannelToDo.Web.csproj",
                         "apiPath": "[concat('http://', variables('apiSiteName'), '.azurewebsites.net/api')]"
                     }
                 },

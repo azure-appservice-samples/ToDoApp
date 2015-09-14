@@ -275,7 +275,7 @@
                             ],
                             "properties": {
                                 "apiPath": "[concat('http://', reference(resourceId('Microsoft.Web/Sites/Slots', variables('apiSiteName'), 'Staging')).hostNames[0], '/api')]",
-                                "PROJECT": "src\\MultiChannelToDo.Web\\app"
+                                "PROJECT": "src\\MultiChannelToDo.Web\\MultiChannelToDo.Web.csproj"
                             }
                         },
                         {
