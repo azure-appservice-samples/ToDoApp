@@ -36,7 +36,7 @@
     <!-- AngularJS App -->
     <script src="js/app.js" type="text/javascript"></script>
     <script type="text/javascript">
-        var apiPath = "@Environment.GetEnvironmentVariable("apiPath")";
+        var apiPath = "@System.Configuration.ConfigurationManager.AppSettings["apiPath"]";
     </script>
     <script src="js/controllers/ToDoController.js" type="text/javascript"></script>
     <script src="js/services/ToDoService.js" type="text/javascript"></script>

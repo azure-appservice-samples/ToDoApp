@@ -19,6 +19,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,6 +40,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -48,6 +53,26 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -57,29 +82,30 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\css\site.css" />
-    <Content Include="app\img\spinner.gif" />
-    <None Include="app\index.cshtml" />
-    <Content Include="app\js\app.js" />
-    <Content Include="app\js\controllers\ToDoController.js" />
-    <Content Include="app\js\services\ToDoService.js" />
-    <Content Include="app\lib\angular\angular.min.js" />
-    <Content Include="app\lib\bootstrap\css\bootstrap-theme.min.css" />
-    <Content Include="app\lib\bootstrap\css\bootstrap.min.css" />
-    <Content Include="app\lib\bootstrap\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="app\lib\bootstrap\js\bootstrap.min.js" />
-    <Content Include="app\lib\jquery\jquery.min.js" />
-    <Content Include="app\js\models\todoitem.json" />
-    <Content Include="app\lib\bootstrap\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="app\lib\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="app\lib\bootstrap\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="app\lib\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="css\site.css" />
+    <Content Include="img\spinner.gif" />
+    <None Include="index.cshtml" />
+    <Content Include="js\app.js" />
+    <Content Include="js\controllers\ToDoController.js" />
+    <Content Include="js\services\ToDoService.js" />
+    <Content Include="lib\angular\angular.min.js" />
+    <Content Include="lib\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="lib\bootstrap\css\bootstrap.min.css" />
+    <Content Include="lib\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="lib\bootstrap\js\bootstrap.min.js" />
+    <Content Include="lib\jquery\jquery.min.js" />
+    <Content Include="js\models\todoitem.json" />
+    <Content Include="lib\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="lib\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="lib\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="lib\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\cf-todo.pubxml" />
     <None Include="Properties\PublishProfiles\cf-todoapp.pubxml" />
     <None Include="Properties\PublishProfiles\donnam-multichannel-webapp.pubxml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\Web.config" />
+    <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
