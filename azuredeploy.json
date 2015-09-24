@@ -60,7 +60,7 @@
         },
         "sqlDbEdition": {
             "type": "string",
-            "defaultValue": "Web"
+            "defaultValue": "Basic"
         },
         "sqlDbMaxSizeBytes": {
             "type": "string",
@@ -68,7 +68,7 @@
         },
         "sqlDbServiceObjectiveId": {
             "type": "string",
-            "defaultValue": "910b4fcb-8a29-4c3e-958f-f7ba794388b2"
+            "defaultValue": "dd6d99bb-f193-4ec1-86f2-43d3bccbc49c"
         }
     },
     "variables": {

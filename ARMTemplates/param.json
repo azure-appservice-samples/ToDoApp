@@ -22,6 +22,9 @@
         },
         "sqlDbName": {
             "value": "DemosDB"
+        },
+        "slotName": {
+            "value": "{SLOT}"
         }
     }
 }

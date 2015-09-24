@@ -1,4 +1,6 @@
 ﻿Param(
+	[string] $ResourceGroupSuffix = "",
+	[string] $SlotName = "Staging",
 	[string] $TemplateFile = "ProdAndStage.json",
 	[string] $TemplateParameterFile = "param.json",
 	[string] $RepoUrl = "https://github.com/azure-appservice-samples/ToDoApp.git",
@@ -11,8 +13,8 @@ Function WaitOnDeployment($ResourceGroupName, $SiteName)
 { 
 	Write-Host -NoNewline "Waiting until the deployment for $SiteName is done..."
 
-	#Check if staging slot is specified
-	if ($SiteName -match "/Staging")
+	#Check if named slot is specified
+	if ($SiteName -match "/$SlotName")
 	{
 		$resourceType = "Microsoft.Web/sites/slots/Deployments"
 	}
@@ -70,20 +72,23 @@ else
 	#Use ARM cmdlets
 	Switch-AzureMode -Name AzureResourceManager
 
-	#Random
-	#Used to randomize the names of the resources being created to avoid conflicts
-	$Random = [system.guid]::NewGuid().tostring().substring(0,5) + $Branch.ToLower()
+	#If resource group name is not specified, assign a random string to avoid conflicts
+	if($ResourceGroupSuffix -eq "")
+	{
+		$ResourceGroupSuffix = [system.guid]::NewGuid().tostring().substring(0,5) + $Branch.ToLower()		
+	}
 
 	#Resource Group Properties
-	$RG_Name = "ToDoApp${Random}-group"
+	$RG_Name = "ToDoApp$ResourceGroupSuffix"
 	$RG_Location = "West US"
 
 	#Set parameters in parameter file and save to temp.json
 	(Get-Content ".\${TemplateParameterFile}" -Raw) `
-		-replace "{UNIQUE}",$Random `
+		-replace "{UNIQUE}",$ResourceGroupSuffix `
 		-replace "{LOCATION}",$RG_Location `
 		-replace "{REPO}",$RepoUrl `
-		-replace "{BRANCH}",$Branch | 
+		-replace "{BRANCH}",$Branch `
+		-replace "{SLOT}",$SlotName | 
 			Set-Content .\temp.json
 		
 	Write-Host "Creating Resource Group, App Service Plan, Web Apps and SQL Database..." -ForegroundColor Green 
@@ -109,19 +114,19 @@ else
 	#Wait for Kudu deployment to complete and launch the deployed web application
 	If($TemplateFile -match "ProdAndStage.json")
 	{
-		WaitOnDeployment $RG_Name "ToDoApp${Random}/Staging"
-		WaitOnDeployment $RG_Name "ToDoApp${Random}Api/Staging"
+		WaitOnDeployment $RG_Name "ToDoApp${ResourceGroupSuffix}/$SlotName"
+		WaitOnDeployment $RG_Name "ToDoApp${ResourceGroupSuffix}Api/$SlotName"
 
 		Switch-AzureMode -Name AzureServiceManagement -WarningAction SilentlyContinue
-		Show-AzureWebsite -Name "ToDoApp$Random" -Slot Staging
+		Show-AzureWebsite -Name "ToDoApp$ResourceGroupSuffix" -Slot $SlotName
 	}
 	else
 	{
-		WaitOnDeployment $RG_Name "ToDoApp${Random}"
-		WaitOnDeployment $RG_Name "ToDoApp${Random}Api"
+		WaitOnDeployment $RG_Name "ToDoApp${ResourceGroupSuffix}"
+		WaitOnDeployment $RG_Name "ToDoApp${ResourceGroupSuffix}Api"
 
 		Switch-AzureMode -Name AzureServiceManagement -WarningAction SilentlyContinue
-		Show-AzureWebsite -Name "ToDoApp$Random"
+		Show-AzureWebsite -Name "ToDoApp$ResourceGroupSuffix"
 	}
 
 	Write-Host "-----------------------------------------"  -ForegroundColor Green 

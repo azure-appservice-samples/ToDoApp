@@ -1,11 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiChannelToDo", "MultiChannelToDo\MultiChannelToDo.csproj", "{7FD00959-F0CB-43B2-90AD-DBBCADD18098}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiChannelToDo.Web", "MultiChannelToDo.Web\MultiChannelToDo.Web.csproj", "{42BAD27A-43D5-4E96-AAF4-0DDB65C30C65}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7FD00959-F0CB-43B2-90AD-DBBCADD18098} = {7FD00959-F0CB-43B2-90AD-DBBCADD18098}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
