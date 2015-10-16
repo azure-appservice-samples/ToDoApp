@@ -66,6 +66,10 @@
         "sqlDbServiceObjectiveId": {
             "type": "string",
             "defaultValue": "dd6d99bb-f193-4ec1-86f2-43d3bccbc49c"
+        },
+        "slotName": {
+            "type": "string",
+            "defaultValue": "Staging"
         }
     },
     "variables": {
