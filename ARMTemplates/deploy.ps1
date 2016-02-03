@@ -25,11 +25,10 @@ Function WaitOnDeployment($ResourceGroupName, $SiteName)
 
 	While ($true) 
 	{ 
-		$deployments = Get-AzureResource `
+		$deployments = Get-AzureRmResource `
 						-ResourceGroupName $ResourceGroupName `
 						-ResourceType $resourceType `
 						-Name $SiteName `
-						-OutputObjectFormat New `
 						-ApiVersion 2015-06-01 
 
 		if ($deployments) 
@@ -69,8 +68,6 @@ else
 
 	[System.Console]::Clear()
 
-	#Use ARM cmdlets
-	Switch-AzureMode -Name AzureResourceManager
 
 	#If resource group name is not specified, assign a random string to avoid conflicts
 	if($ResourceGroupSuffix -eq "")
@@ -96,12 +93,16 @@ else
 	{
 		#Missing parameters in the parameters file, such as sqlServerAdminLogin and sqlServerAdminPassword, will be
 		#prompted automatically and securely
-		New-AzureResourceGroup -Verbose `
+		New-AzureRmResourceGroup -Verbose `
 			-name $RG_Name `
 			-location $RG_Location `
-			-TemplateFile ".\$TemplateFile" `
-			-TemplateParameterFile ".\temp.json" `
 			-ErrorAction Stop
+        
+        New-AzureRmResourceGroupDeployment `
+            -name $RG_Name.ToLower() `
+            -ResourceGroupName $RG_Name.ToLower() `
+            -TemplateFile ".\$TemplateFile" `
+			-TemplateParameterFile ".\temp.json"
 	}
 	catch 
 	{
@@ -117,7 +118,6 @@ else
 		WaitOnDeployment $RG_Name "ToDoApp${ResourceGroupSuffix}/$SlotName"
 		WaitOnDeployment $RG_Name "ToDoApp${ResourceGroupSuffix}Api/$SlotName"
 
-		Switch-AzureMode -Name AzureServiceManagement -WarningAction SilentlyContinue
 		Show-AzureWebsite -Name "ToDoApp$ResourceGroupSuffix" -Slot $SlotName
 	}
 	else
@@ -125,7 +125,6 @@ else
 		WaitOnDeployment $RG_Name "ToDoApp${ResourceGroupSuffix}"
 		WaitOnDeployment $RG_Name "ToDoApp${ResourceGroupSuffix}Api"
 
-		Switch-AzureMode -Name AzureServiceManagement -WarningAction SilentlyContinue
 		Show-AzureWebsite -Name "ToDoApp$ResourceGroupSuffix"
 	}
 
