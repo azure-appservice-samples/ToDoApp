@@ -49,22 +49,31 @@ Function WaitOnDeployment($ResourceGroupName, $SiteName)
 } 
 
 # MAIN
+
+trap {Write-Host("[ERROR] " + $_) -Foregroundcolor Red; Continue}
+
 $start = get-date
 
 if (!(Test-Path ".\$TemplateFile")) 
 {
-	write-host "template not found" -ForegroundColor Red
+	Write-Host "template not found" -ForegroundColor Red
 }
 elseif (!(Test-Path ".\$TemplateParameterFile")) 
 {
-	write-host "template not found" -ForegroundColor Red
+	Write-Host "template not found" -ForegroundColor Red
 }
 else 
 {
-	if(!(Get-Module Azure) -and !(Get-Module AzureResourceManager))
+	Write-Host "Make sure required modules are loaded..." 
+	if(!(Get-Module Azure) -or !(Get-Module AzureRM))
 	{
 		Import-Module Azure
+		Import-Module AzureRM
 	}
+
+	Write-Host "Make sure we're logged in..."
+	Get-AzureRmSubscription
+	Get-AzureSubscription
 
 	[System.Console]::Clear()
 
