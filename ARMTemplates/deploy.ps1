@@ -65,15 +65,13 @@ elseif (!(Test-Path ".\$TemplateParameterFile"))
 else 
 {
 	Write-Host "Make sure required modules are loaded..." 
-	if(!(Get-Module Azure) -or !(Get-Module AzureRM))
+	if(!(Get-Module AzureRM))
 	{
-		Import-Module Azure
 		Import-Module AzureRM
 	}
 
 	Write-Host "Make sure we're logged in..."
 	Get-AzureRmSubscription
-	Get-AzureSubscription
 
 	[System.Console]::Clear()
 
@@ -111,7 +109,8 @@ else
             -name $RG_Name.ToLower() `
             -ResourceGroupName $RG_Name.ToLower() `
             -TemplateFile ".\$TemplateFile" `
-			-TemplateParameterFile ".\temp.json"
+			-TemplateParameterFile ".\temp.json" `
+			-Verbose
 	}
 	catch 
 	{
@@ -127,14 +126,14 @@ else
 		WaitOnDeployment $RG_Name "ToDoApp${ResourceGroupSuffix}/$SlotName"
 		WaitOnDeployment $RG_Name "ToDoApp${ResourceGroupSuffix}Api/$SlotName"
 
-		Show-AzureWebsite -Name "ToDoApp$ResourceGroupSuffix" -Slot $SlotName
+		Start-Process -FilePath "http://ToDoApp$ResourceGroupSuffix-$SlotName.azurewebsites.net"
 	}
 	else
 	{
 		WaitOnDeployment $RG_Name "ToDoApp${ResourceGroupSuffix}"
 		WaitOnDeployment $RG_Name "ToDoApp${ResourceGroupSuffix}Api"
 
-		Show-AzureWebsite -Name "ToDoApp$ResourceGroupSuffix"
+		Start-Process -FilePath "http://ToDoApp$ResourceGroupSuffix.azurewebsites.net"
 	}
 
 	Write-Host "-----------------------------------------"  -ForegroundColor Green 
