@@ -151,7 +151,7 @@
                     "name": "appsettings",
                     "type": "config",
                     "dependsOn": [
-                        "[resourceId('Microsoft.Web/Sites', variables('apiSiteName'))]",
+                        "[resourceId('Microsoft.Web/Sites', variables('apiSiteName'))]"
                     ],
                     "properties": {
                         "PROJECT": "src\\MultiChannelToDo\\MultiChannelToDo.csproj",
@@ -177,7 +177,7 @@
                     "dependsOn": [
                         "[resourceId('Microsoft.Web/Sites', variables('apiSiteName'))]",
                         "[resourceId('Microsoft.Web/Sites/config', variables('apiSiteName'), 'appsettings')]",
-                        "[resourceId('Microsoft.Web/Sites/config', variables('apiSiteName'), 'connectionstrings')]",
+                        "[resourceId('Microsoft.Web/Sites/config', variables('apiSiteName'), 'connectionstrings')]"
                     ],
                     "properties": {
                         "RepoUrl": "[parameters('repoUrl')]",
@@ -204,7 +204,7 @@
                     "name": "appsettings",
                     "type": "config",
                     "dependsOn": [
-                        "[resourceId('Microsoft.Web/Sites', parameters('siteName'))]",
+                        "[resourceId('Microsoft.Web/Sites', parameters('siteName'))]"
                     ],
                     "properties": {
                         "PROJECT": "src\\MultiChannelToDo.Web\\MultiChannelToDo.Web.csproj",
